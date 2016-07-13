@@ -19,10 +19,6 @@ package org.wso2.carbon.connector.integration.test.billiving;
 */
 
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.axiom.om.util.Base64;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +28,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.connector.integration.test.base.ConnectorIntegrationTestBase;
 import org.wso2.connector.integration.test.base.RestResponse;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BillivingConnectorIntegrationTest extends ConnectorIntegrationTestBase {
 
@@ -48,7 +48,7 @@ public class BillivingConnectorIntegrationTest extends ConnectorIntegrationTestB
     @BeforeClass(alwaysRun = true)
     public void setEnvironment() throws Exception {
 
-        init("billiving-connector-1.0.1-SNAPSHOT");
+        init("billiving-connector-1.0.1");
 
         apiUrl = connectorProperties.getProperty("apiUrl");
 
@@ -210,20 +210,11 @@ public class BillivingConnectorIntegrationTest extends ConnectorIntegrationTestB
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_listClients_negative.json");
 
-        String esbResponseArrayString = esbRestResponse.getBody().getString("output");
-        JSONArray esbResponseArray = new JSONArray(esbResponseArrayString);
-        JSONObject esbObject = esbResponseArray.getJSONObject(0);
-
         String apiEndPoint = apiUrl + "/api2/v1/clients?StatusId=Invalid";
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequestHTTPS(apiEndPoint, "GET", apiRequestHeadersMap, null, null, true);
 
-        String apiResponseArrayString = apiRestResponse.getBody().getString("output");
-        JSONArray apiResponseArray = new JSONArray(apiResponseArrayString);
-        JSONObject apiObject = apiResponseArray.getJSONObject(0);
-
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), apiRestResponse.getHttpStatusCode());
-        Assert.assertEquals(esbObject.getString("Key"), apiObject.getString("Key"));
-        Assert.assertEquals(esbObject.getString("Value"), apiObject.getString("Value"));
+        Assert.assertEquals(esbRestResponse.getBody().toString(), apiRestResponse.getBody().toString());
 
     }
 
@@ -377,21 +368,11 @@ public class BillivingConnectorIntegrationTest extends ConnectorIntegrationTestB
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_listInvoices_negative.json");
 
-        String esbResponseArrayString = esbRestResponse.getBody().getString("output");
-        JSONArray esbResponseArray = new JSONArray(esbResponseArrayString);
-        JSONObject esbObject = esbResponseArray.getJSONObject(0);
-
         String apiEndPoint = apiUrl + "/api2/v1/invoices?Status=Invalid";
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequestHTTPS(apiEndPoint, "GET", apiRequestHeadersMap, null, null, true);
 
-        String apiResponseArrayString = apiRestResponse.getBody().getString("output");
-        JSONArray apiResponseArray = new JSONArray(apiResponseArrayString);
-        JSONObject apiObject = apiResponseArray.getJSONObject(0);
-
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), apiRestResponse.getHttpStatusCode());
-        Assert.assertEquals(esbObject.getString("Key"), apiObject.getString("Key"));
-        Assert.assertEquals(esbObject.getString("Value"), apiObject.getString("Value"));
-
+        Assert.assertEquals(esbRestResponse.getBody().toString(), apiRestResponse.getBody().toString());
     }
 
 

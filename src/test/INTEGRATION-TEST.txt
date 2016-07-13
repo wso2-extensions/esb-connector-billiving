@@ -15,7 +15,7 @@ Pre-requisites:
  
 STEPS:
 
-1. Download ESB 4.9.0 from the official site
+1. Download ESB 5.0.0-SNAPSHOT from official website. Extract the ESB and put "-XX:-UseSplitVerifier" under $JVM_MEM_OPTS into {ESB_HOME}/bin/wso2server.sh.
 
 2. Follow the below mentioned steps to create a new Billiving account:
 

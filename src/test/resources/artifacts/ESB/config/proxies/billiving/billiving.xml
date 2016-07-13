@@ -67,8 +67,7 @@
                 <case regex="urn:createClient">
                     <billiving.createClient>
                         <telephone1>{$ctx:telephone1}</telephone1>
-                        <invoiceReminderPriorInDays>{$ctx:invoiceReminderPriorInDays}
-                        </invoiceReminderPriorInDays>
+                        <invoiceReminderPriorInDays>{$ctx:invoiceReminderPriorInDays}</invoiceReminderPriorInDays>
                         <fax>{$ctx:fax}</fax>
                         <telephone2>{$ctx:telephone2}</telephone2>
                         <organizationName>{$ctx:organizationName}</organizationName>
@@ -91,8 +90,7 @@
                         <due>{$ctx:due}</due>
                         <discountId>{$ctx:discountId}</discountId>
                         <bankAccountId>{$ctx:bankAccountId}</bankAccountId>
-                        <invoiceReminderPastInDays>{$ctx:invoiceReminderPastInDays}
-                        </invoiceReminderPastInDays>
+                        <invoiceReminderPastInDays>{$ctx:invoiceReminderPastInDays}</invoiceReminderPastInDays>
                     </billiving.createClient>
                 </case>
                 <case regex="urn:getClient">

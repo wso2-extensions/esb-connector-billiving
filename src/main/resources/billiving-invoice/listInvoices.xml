@@ -131,7 +131,7 @@
                urlQuery += "To=" + to + '&';
             }
             if (urlQuery != "") {
-               urlQuery = '?' + urlQuery.substring(0, urlQuery.length - 1);
+               urlQuery = '?' + urlQuery.toString().substring(0, urlQuery.toString().lastIndexOf("&"));
                var encordedURLQuery=encodeURI(urlQuery);
                mc.setProperty('uri.var.urlQuery', encordedURLQuery);
             } 
@@ -139,7 +139,7 @@
         </script>
         <call>
             <endpoint>
-                <http method="get" uri-template="{uri.var.apiUrl}/invoices{uri.var.urlQuery}"/>
+                <http method="get" uri-template="{uri.var.apiUrl}/invoices{+uri.var.urlQuery}"/>
             </endpoint>
         </call>
         <!-- Remove response custom header information -->
