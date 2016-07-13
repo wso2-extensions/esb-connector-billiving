@@ -48,7 +48,7 @@ public class BillivingConnectorIntegrationTest extends ConnectorIntegrationTestB
     @BeforeClass(alwaysRun = true)
     public void setEnvironment() throws Exception {
 
-        init("billiving-connector-1.0.1");
+        init("billiving-connector-1.0.2-SNAPSHOT");
 
         apiUrl = connectorProperties.getProperty("apiUrl");
 
