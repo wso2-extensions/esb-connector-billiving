@@ -168,7 +168,7 @@ public class BillivingConnectorIntegrationTest extends ConnectorIntegrationTestB
         JSONObject apiObject = apiResponseArray.getJSONObject(0);
 
         Assert.assertEquals(esbResponseArray.length(), apiResponseArray.length());
-        Assert.assertEquals(esbObject.getInt("Id"), apiObject.getInt("Id"));
+        Assert.assertEquals(esbObject.getString("Id"), apiObject.getString("Id"));
         Assert.assertEquals(esbObject.getString("OrganizationName"), apiObject.getString("OrganizationName"));
         Assert.assertEquals(esbObject.getString("Email"), apiObject.getString("Email"));
     }
@@ -195,7 +195,7 @@ public class BillivingConnectorIntegrationTest extends ConnectorIntegrationTestB
         JSONArray apiResponseArray = new JSONArray(apiResponseArrayString);
         JSONObject apiObject = apiResponseArray.getJSONObject(0);
 
-        Assert.assertEquals(esbObject.getInt("Id"), apiObject.getInt("Id"));
+        Assert.assertEquals(esbObject.getString("Id"), apiObject.getString("Id"));
         Assert.assertEquals(esbObject.getString("Email"), apiObject.getString("Email"));
     }
 
@@ -324,7 +324,7 @@ public class BillivingConnectorIntegrationTest extends ConnectorIntegrationTestB
         JSONObject apiObject = apiResponseArray.getJSONObject(0);
 
         Assert.assertEquals(esbResponseArray.length(), apiResponseArray.length());
-        Assert.assertEquals(esbObject.getInt("Id"), apiObject.getInt("Id"));
+        Assert.assertEquals(esbObject.getString("Id"), apiObject.getString("Id"));
         Assert.assertEquals(esbObject.getString("IssueDate"), apiObject.getString("IssueDate"));
         Assert.assertEquals(esbObject.getString("OrganizationName"), apiObject.getString("OrganizationName"));
     }
@@ -351,7 +351,7 @@ public class BillivingConnectorIntegrationTest extends ConnectorIntegrationTestB
         JSONArray apiResponseArray = new JSONArray(apiResponseArrayString);
         JSONObject apiObject = apiResponseArray.getJSONObject(0);
 
-        Assert.assertEquals(esbObject.getInt("Id"), apiObject.getInt("Id"));
+        Assert.assertEquals(esbObject.getString("Id"), apiObject.getString("Id"));
         Assert.assertEquals(esbObject.getString("IssueDate"), apiObject.getString("IssueDate"));
         Assert.assertEquals(connectorProperties.getProperty("status"), apiObject.getString("Status"));
         Assert.assertEquals(connectorProperties.getProperty("status"), apiObject.getString("PayStatus"));
